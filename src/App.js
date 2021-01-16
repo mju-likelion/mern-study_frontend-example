@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header';
+import Auth from './pages/Auth';
 import Counter from './pages/Counter';
 import Home from './pages/Home';
 
@@ -15,8 +16,8 @@ function App() {
         <Router path="/counter">
           <Counter />
         </Router>
-        <Route path="/login">
-          <h4>Log In Page</h4>
+        <Route path="/auth">
+          <Auth />
         </Route>
         <Route>
           <h4>No Match</h4>
