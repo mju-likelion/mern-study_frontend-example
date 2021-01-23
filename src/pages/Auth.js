@@ -36,7 +36,7 @@ function Auth({ pageType }) {
           email,
           password,
         });
-        console.log(data);
+        localStorage.setItem('jwtToken', data);
       } catch (error) {
         const { status } = error.response;
         if (status === 400) {
