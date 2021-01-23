@@ -1,24 +1,18 @@
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-function Auth() {
-  const [type, setType] = useState('register');
-
+function Auth({ pageType }) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  function toggleAuth() {
-    if (type === 'register') setType('login');
-    else setType('register');
-  }
-
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (type === 'register') {
+    if (pageType === 'register') {
       try {
         await axios.post('/auth/register', {
           username,
@@ -72,12 +66,9 @@ function Auth() {
 
   return (
     <>
-      <h1>Register</h1>
-      <button type="button" onClick={toggleAuth}>
-        {type === 'register' ? '로그인하기' : '회원가입하기'}
-      </button>
+      <h1>{pageType}</h1>
       <form onSubmit={handleSubmit}>
-        {type === 'register' && (
+        {pageType === 'register' && (
           <input
             name="username"
             type="text"
@@ -101,7 +92,7 @@ function Auth() {
           onChange={handleChange}
         />
         <button type="submit">
-          {type === 'register' ? 'Register' : 'Login'}
+          {pageType === 'register' ? 'Register' : 'Login'}
         </button>
       </form>
       <p className="text-green-400">{successMessage}</p>
@@ -109,5 +100,9 @@ function Auth() {
     </>
   );
 }
+
+Auth.propTypes = {
+  pageType: PropTypes.oneOf(['register', 'login']).isRequired,
+};
 
 export default Auth;

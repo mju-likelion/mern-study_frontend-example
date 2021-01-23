@@ -10,17 +10,19 @@ function Header() {
           </Link>
         </div>
         <div>
-          <Link to="/login">
+          <Link to="/auth/login">
             <button className="mx-1 px-2 py-1 text-gray-900" type="button">
               Log In
             </button>
           </Link>
-          <button
-            className="border border-gray-700 rounded mx-1 px-2 py-1 text-gray-700"
-            type="button"
-          >
-            Sign In
-          </button>
+          <Link to="/auth/signup">
+            <button
+              className="border border-gray-700 rounded mx-1 px-2 py-1 text-gray-700"
+              type="button"
+            >
+              Sign In
+            </button>
+          </Link>
         </div>
       </div>
     </header>

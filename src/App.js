@@ -16,8 +16,11 @@ function App() {
         <Router path="/counter">
           <Counter />
         </Router>
-        <Route path="/auth">
-          <Auth />
+        <Route path="/auth/login">
+          <Auth pageType="login" />
+        </Route>
+        <Route path="/auth/signup">
+          <Auth pageType="register" />
         </Route>
         <Route>
           <h4>No Match</h4>
